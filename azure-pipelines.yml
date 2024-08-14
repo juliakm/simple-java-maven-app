@@ -37,7 +37,6 @@ stages:
           javaHomeOption: 'JDKVersion'
           jdkVersionOption: '1.11' 
           jdkArchitectureOption: 'x64'
-          codeCoverageToolOption: None
           publishJUnitResults: true
           testResultsFiles: '**/target/surefire-reports/TEST-*.xml'
           goals: 'clean package'
