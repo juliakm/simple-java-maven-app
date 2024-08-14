@@ -29,16 +29,25 @@ stages:
       vmImage: $(vmImageName)
 
     steps:
+      - task: UseJavaVersion@1
+        displayName: 'Set up JDK 17'
+        inputs:
+          versionSpec: '17'
+          jdkArchitectureOption: 'x64'
+          jdkSourceOption: 'PreInstalled'
+          jdkFile: ''
+
       - task: Maven@4
         displayName: 'Maven Package'
         inputs:
           mavenPomFile: 'pom.xml'
           mavenOptions: '-Xmx3072m'
           javaHomeOption: 'JDKVersion'
-          jdkVersionOption: '1.11' 
+          jdkVersionOption: '17' 
           jdkArchitectureOption: 'x64'
+          codeCoverageToolOption: None
           publishJUnitResults: true
-          testResultsFiles: '**/target/surefire-reports/TEST-*.xml'
+          testResultsFiles: '$(System.DefaultWorkingDirectory)/**/surefire-reports/*.xml'
           goals: 'clean package'
 
       - task: CopyFiles@2
