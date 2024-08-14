@@ -38,8 +38,8 @@ stages:
           jdkVersionOption: '1.11' 
           jdkArchitectureOption: 'x64'
           codeCoverageToolOption: None
-          publishJUnitResults: true
-          testResultsFiles: '$(System.DefaultWorkingDirectory)/**/surefire-reports/*.xml'
+     #     publishJUnitResults: true
+     #     testResultsFiles: '$(System.DefaultWorkingDirectory)/**/surefire-reports/*.xml'
           goals: 'package'
 
       - task: CopyFiles@2
