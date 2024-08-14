@@ -29,7 +29,7 @@ stages:
       vmImage: $(vmImageName)
 
     steps:
-      - task: Maven@3
+      - task: Maven@4
         displayName: 'Maven Package'
         inputs:
           mavenPomFile: 'pom.xml'
@@ -37,6 +37,7 @@ stages:
           javaHomeOption: 'JDKVersion'
           jdkVersionOption: '1.11' 
           jdkArchitectureOption: 'x64'
+          codeCoverageToolOption: None
           publishJUnitResults: true
           testResultsFiles: '$(System.DefaultWorkingDirectory)/**/surefire-reports/*.xml'
           goals: 'package'
