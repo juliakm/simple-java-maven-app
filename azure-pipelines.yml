@@ -38,9 +38,9 @@ stages:
           jdkVersionOption: '1.11' 
           jdkArchitectureOption: 'x64'
           codeCoverageToolOption: None
-     #     publishJUnitResults: true
-     #     testResultsFiles: '$(System.DefaultWorkingDirectory)/**/surefire-reports/*.xml'
-          goals: 'package'
+          publishJUnitResults: true
+          testResultsFiles: '**/target/surefire-reports/TEST-*.xml'
+          goals: 'clean package'
 
       - task: CopyFiles@2
         displayName: 'Copy Files to artifact staging directory'
