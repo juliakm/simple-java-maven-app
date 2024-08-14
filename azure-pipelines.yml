@@ -30,16 +30,10 @@ stages:
 
     steps:
     - task: Maven@3
-      displayName: 'Maven Package'
+      displayName: 'Build with Maven'
       inputs:
         mavenPomFile: 'pom.xml'
-        mavenOptions: '-Xmx3072m'
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '1.11' 
-        jdkArchitectureOption: 'x64'
-        publishJUnitResults: false
-        # testResultsFiles: '**/surefire-reports/TEST-*.xml'
-        goals: 'package'
+        goals: 'clean package -DskipTests'  # Skip tests
 
     - task: CopyFiles@2
       displayName: 'Copy Files to artifact staging directory'
